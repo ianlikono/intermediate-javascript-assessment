@@ -7,20 +7,20 @@
 
 // Given the following nested functions:
 
-function daBears(){
+function daBears() {
   var isFurry = true;
 
-  function papaBear (){
+  function papaBear() {
     var porridge = "Too Hot!";
     var chair = "Too Big!";
     var bed = "Too Hard!";
     var feeling = "Angry";
 
-    function mamaBear(){
+    function mamaBear() {
       var porridge = "Too Cold!";
       var bed = "Too Soft!";
 
-      function babyBear(){
+      function babyBear() {
         var porridge = "Just right!";
         var chair = "Just right!";
         var bed = "Just right!";
@@ -30,7 +30,7 @@ function daBears(){
     }
   }
 
-  function goldilocks(){
+  function goldilocks() {
     var feeling = "Hungry";
     var isFurry = false;
     var isDinner = true;
@@ -43,28 +43,27 @@ function daBears(){
 // Which function(s) access the "chair" variable and get "Too Big!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale1 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale1 = ["papaBear", "mamaBear"];
 
 // Which function(s) access the "feeling" variable and get "Hungry"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale2 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale2 = ["goldilocks"];
 
 // Which function(s) access the "porridge" variable and get "Too Cold!"
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale3 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale3 = ["mamaBear"];
 
 // Which function(s) access the "sleepy" variable and get undefined
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale4 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
+var fairyTale4 = ["daBears", "papaBear", "mamaBear", "goldilocks"];
 
 // Which function(s) access the isFurry variable and get true
 // (Delete wrong answers, leave correct ones)
 
-var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
-
+var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear"];
 
 // *************
 // * PROBLEM 2 *
@@ -72,6 +71,21 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
 // Write a constructor function called Vehicle.  Vehicle should have a property
 // called gasRemaining that is equal to 100.
+
+function Vehicle(gasRemaining) {
+  this.gasRemaining = 100;
+}
+
+function drive(gasRemaining) {
+  gasRemaining = gasRemaining - 25;
+  return gasRemaining;
+}
+
+var charger = new Vehicle();
+var mustang = new Vehicle();
+
+drive(charger.gasRemaining);
+// console.log(charger.drive(this.gasRemaining));
 
 // Next, assign a function called drive to the Vehicle prototype.  When invoked,
 // drive should subtract 25 from the gasRemaining property of any Vehicle your constructor
@@ -83,33 +97,32 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
 // CODE HERE...
 
-
-
-
-
 // -----------------------------------------------------------------------------
 
 // *************
 // * PROBLEM 3 *
 // *************
 
-
 // For this problem, you will need to add a method to the String prototype named
 // "grammarPolice".  When called on a string, "grammarPolice" will return a new string
 //  where the first letter of every word is capitalized, while reverting the remainder
 // of each word to lowercase.
+
+String.prototype.grammarPolice = function(str) {
+  var arr = str.split(" ");
+  for (var i = 0; i < arr.length; i++) {
+    arr[i].charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+  return arr.join(" ");
+};
+// grammarPolice("i Love This");
 
 // For example: "OH HELLO THERE" becomes "Oh Hello There"
 
 // Your method may be passed punctuation, numbers or other non-letter characters
 // and should neither modify them nor break when encountering them.
 
-
-
-
 // CODE HERE...
-
-
 
 // *************
 // * PROBLEM 4 *
@@ -127,7 +140,15 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 
 // CODE HERE...
 
-
+function valueType(a, b) {
+  if (a === b) {
+    return "Exactly the same";
+  } else if (a == b) {
+    return "Same value, different types";
+  } else {
+    return "Different values";
+  }
+}
 
 // *************
 // * PROBLEM 5 *
@@ -139,5 +160,10 @@ var fairyTale5 = ["daBears", "papaBear", "mamaBear", "babyBear", "goldilocks"];
 // When your promise receives its results, set variable 'theAnswer' (seen below) equal to the result.
 
 var theAnswer = "Unknown";
+function promiseCatcher(a) {
+  a.then(answer => {
+    return (theAnswer = answer);
+  });
+}
 
 // CODE HERE...

@@ -14,7 +14,10 @@
 
 // CODE HERE...
 
-
+function callBinding(magicAnimals, updateAnimal, id) {
+  const animal = magicAnimals.filter(animal => animal.id === id);
+  return updateAnimal.call(animal, "Trogdor");
+}
 
 // *************
 // * PROBLEM 2 *
@@ -29,7 +32,11 @@
 
 // CODE HERE...
 
-
+function applyBinding(magicAnimals, updateAnimal, id) {
+  const animal = magicAnimals.filter(animal => animal.id === id);
+  const arr = ["being majestic", "eating rainbows"];
+  return updateAnimal.apply(animal, arr);
+}
 
 // *************
 // * PROBLEM 3 *
@@ -48,8 +55,14 @@
 var foo;
 
 // CODE HERE...
-
-
+function promiseMe(a) {
+  var promise = new Promise(function(resolve, reject) {
+    setTimeout(() => {}, 20);
+  });
+  return promise.then(() => {
+    foo = "bar";
+  });
+}
 
 // *************
 // * PROBLEM 4 *
@@ -64,3 +77,7 @@ var foo;
 // and then resolve the array as you complete your promise.
 
 // CODE HERE...
+
+function emailList(a, b) {
+  var promise = new Promise(function(resolve, reject) {});
+}
